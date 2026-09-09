@@ -21,9 +21,12 @@ export class Coffee {
   @JoinTable()
   @ManyToMany(
     type => Flavor,
-    flavor => flavor.coffees
+    flavor => flavor.coffees,
+    {
+      cascade: true, // allows to insert flavors when creating a coffee
+    }
     )
-  flavors: string[];
+  flavors: Flavor[];
 }
 
 
